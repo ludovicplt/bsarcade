@@ -9,12 +9,18 @@
 
     #include <string>
     #include <iostream>
-    class object
+
+    class Iobject
+    {
+        public:
+            virtual ~Iobject() = default;
+            virtual int do_smth() = 0;
+    };
+
+    class object : virtual public Iobject
     {
         public:
             object();
-            ~object();
-            int do_smth();
-        private:
-
+            ~object() override;
+            int do_smth() override;
     };

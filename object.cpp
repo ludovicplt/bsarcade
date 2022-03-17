@@ -1,5 +1,6 @@
 #include "object.hpp"
-
+#include "stdlib.h"
+#include "unistd.h"
 
 object::object()
 {
@@ -13,14 +14,14 @@ object::~object()
 
 int object::do_smth()
 {
-    std::cout << "do_smth" << std::endl;
+    write(1, "lol\n", 4);
     return (0);
 }
 
 extern "C"
 {
     object *current = NULL;
-    object *load() __attribute__((constructor))
+    object *load() __attribute__((constructor));
     object *load()
     {
         current = new object;

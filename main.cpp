@@ -4,12 +4,12 @@
 
 int main(void)
 {
-    typedef object *(*func_t)();
     void *op = dlopen("./object.so", RTLD_LAZY);
-    func_t init = (func_t)dlsym(op, "load");
+    Iobject *test = (Iobject *)dlsym(op, "current");
 
-    object *test = init();
+    if (test == NULL)
+        std::cout << "ERROR:" << std::endl;
 
-
+    test->do_smth();
     dlclose(op);
 }
